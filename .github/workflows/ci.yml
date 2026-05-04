@@ -61,4 +61,4 @@ jobs:
       - name: run
         run: |
           ros use sbcl
-          LISP="ros run --" make tests 2> /dev/null
+          LISP="qlot exec ros run --" make tests 2> /dev/null
