@@ -134,7 +134,7 @@
 
 (defclass parameter ()
   ((name              :initarg :name              :accessor parameter-name)
-   (in                :initarg :in               :accessor parameter-in)
+   (in                :initarg :in                :accessor parameter-in)
    (description       :initarg :description       :accessor parameter-description)
    (required          :initarg :required          :accessor parameter-required)
    (deprecated        :initarg :deprecated        :accessor parameter-deprecated)
@@ -273,7 +273,7 @@
   ((type                :initarg :type                :accessor security-scheme-type)
    (description         :initarg :description         :accessor security-scheme-description)
    (name                :initarg :name                :accessor security-scheme-name)
-   (in                  :initarg :in                 :accessor security-scheme-in)
+   (in                  :initarg :in                  :accessor security-scheme-in)
    (scheme              :initarg :scheme              :accessor security-scheme-scheme)
    (bearer-format       :initarg :bearer-format       :accessor security-scheme-bearer-format)
    (flows               :initarg :flows               :accessor security-scheme-flows)
