@@ -1,0 +1,12 @@
+("quicklisp" .
+ (:class qlot/source/dist:source-dist
+  :initargs (:distribution "https://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "2026-01-01"))
+("cl-json" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "cl-sdk/cl-json" :ref nil :branch "main" :tag nil)
+  :version "github-1302ed661ebb365842920c21b54d82393bd1e2f9"))
+("meta-definitions" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "cl-sdk/meta-definitions" :ref nil :branch "main" :tag nil)
+  :version "github-41e5c29f68181d0d6eee0a627b94b70ab2402019"))
