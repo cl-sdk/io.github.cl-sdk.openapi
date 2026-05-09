@@ -1,4 +1,4 @@
-(asdf:defsystem #:cl-openapi
+(asdf:defsystem #:io.github.cl-sdk.openapi
   :description "Open API Specification for Common Lisp."
   :license "Unlicense"
   :version "0.0.1"

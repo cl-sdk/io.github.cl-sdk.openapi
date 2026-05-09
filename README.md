@@ -1,14 +1,14 @@
-# cl-openapi
+# io.github.cl-sdk.openapi
 
 OpenAPI 3.0 Specification parser for Common Lisp.
 
-`cl-openapi` parses a JSON-encoded OpenAPI 3.0 document into a tree of
+`io.github.cl-sdk.openapi` parses a JSON-encoded OpenAPI 3.0 document into a tree of
 typed CLOS objects, giving you structured, accessor-based access to every
 field defined by the specification.
 
 ## Installation
 
-`cl-openapi` is not yet in the Quicklisp distribution.  Add it to your
+`io.github.cl-sdk.openapi` is not yet in the Quicklisp distribution.  Add it to your
 project with [qlot](https://github.com/fukamachi/qlot):
 
 ```
@@ -19,28 +19,28 @@ github cl-openapi cl-sdk/cl-openapi :branch main
 Then run `qlot install` and load the system:
 
 ```lisp
-(ql:quickload :cl-openapi)
+(ql:quickload :io.github.cl-sdk.openapi)
 ```
 
 ## Usage
 
 ### Parsing a document
 
-The single public entry point is `cl-openapi:parse`.  It accepts a JSON
+The single public entry point is `io.github.cl-sdk.openapi:parse`.  It accepts a JSON
 string, a character stream, or a binary (octet) stream and returns an
 `openapi-document` instance.
 
 ```lisp
 ;; From a string
 (defvar *doc*
-  (cl-openapi:parse
+  (io.github.cl-sdk.openapi:parse
    "{\"openapi\":\"3.0.0\",
      \"info\":{\"title\":\"Pet Store\",\"version\":\"1.0.0\"},
      \"paths\":{}}"))
 
 ;; From a file
 (with-open-file (stream "/path/to/openapi.json")
-  (defvar *doc* (cl-openapi:parse stream)))
+  (defvar *doc* (io.github.cl-sdk.openapi:parse stream)))
 ```
 
 ### Accessing fields
@@ -48,25 +48,25 @@ string, a character stream, or a binary (octet) stream and returns an
 Every field is exposed through a typed accessor named `<class>-<field>`:
 
 ```lisp
-(cl-openapi:openapi-version *doc*)          ; => "3.0.0"
+(io.github.cl-sdk.openapi:openapi-version *doc*)          ; => "3.0.0"
 
-(let ((info (cl-openapi:openapi-info *doc*)))
-  (cl-openapi:info-title info)              ; => "Pet Store"
-  (cl-openapi:info-version info))           ; => "1.0.0"
+(let ((info (io.github.cl-sdk.openapi:openapi-info *doc*)))
+  (io.github.cl-sdk.openapi:info-title info)              ; => "Pet Store"
+  (io.github.cl-sdk.openapi:info-version info))           ; => "1.0.0"
 
 ;; Paths is a hash-table keyed by path string
-(let ((item (gethash "/pets" (cl-openapi:openapi-paths *doc*))))
-  (cl-openapi:operation-id
-    (cl-openapi:path-item-get item)))       ; => "listPets"
+(let ((item (gethash "/pets" (io.github.cl-sdk.openapi:openapi-paths *doc*))))
+  (io.github.cl-sdk.openapi:operation-id
+    (io.github.cl-sdk.openapi:path-item-get item)))       ; => "listPets"
 ```
 
 Optional fields that are absent from the source document are left **unbound**
 on their slot.  Use `slot-boundp` to test for presence before accessing them.
 
 ```lisp
-(let ((info (cl-openapi:openapi-info *doc*)))
-  (when (slot-boundp info 'cl-openapi::description)
-    (cl-openapi:info-description info)))
+(let ((info (io.github.cl-sdk.openapi:openapi-info *doc*)))
+  (when (slot-boundp info 'io.github.cl-sdk.openapi::description)
+    (io.github.cl-sdk.openapi:info-description info)))
 ```
 
 ### `$ref` handling
@@ -76,10 +76,10 @@ either the concrete typed object or a `reference` instance whose single
 accessor is `reference-ref` (the raw `$ref` string).
 
 ```lisp
-(let ((param (aref (cl-openapi:operation-parameters op) 0)))
-  (if (typep param 'cl-openapi:reference)
-      (cl-openapi:reference-ref param)     ; => "#/components/parameters/Limit"
-      (cl-openapi:parameter-name param)))  ; => "limit"
+(let ((param (aref (io.github.cl-sdk.openapi:operation-parameters op) 0)))
+  (if (typep param 'io.github.cl-sdk.openapi:reference)
+      (io.github.cl-sdk.openapi:reference-ref param)     ; => "#/components/parameters/Limit"
+      (io.github.cl-sdk.openapi:parameter-name param)))  ; => "limit"
 ```
 
 ## API Reference

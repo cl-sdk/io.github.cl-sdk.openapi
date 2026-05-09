@@ -1,4 +1,4 @@
-(defpackage #:cl-openapi
+(defpackage #:io.github.cl-sdk.openapi
   (:use #:cl)
   (:export
    ;; Top-level entry point
@@ -256,4 +256,4 @@
    #:reference
    #:reference-ref))
 
-(in-package :cl-openapi)
+(in-package :io.github.cl-sdk.openapi)

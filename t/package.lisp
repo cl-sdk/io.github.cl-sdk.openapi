@@ -1,4 +1,4 @@
-(defpackage #:cl-openapi.test
-  (:use #:cl #:5am #:cl-openapi))
+(defpackage #:io.github.cl-sdk.openapi.test
+  (:use #:cl #:5am #:io.github.cl-sdk.openapi))
 
-(in-package :cl-openapi.test)
+(in-package :io.github.cl-sdk.openapi.test)

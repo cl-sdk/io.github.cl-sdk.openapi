@@ -1,4 +1,4 @@
-(in-package #:cl-openapi)
+(in-package #:io.github.cl-sdk.openapi)
 
 ;;; CLOS class definitions for the OpenAPI 3.0 Specification objects.
 ;;;

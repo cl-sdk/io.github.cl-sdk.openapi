@@ -1,4 +1,4 @@
-(in-package #:cl-openapi)
+(in-package #:io.github.cl-sdk.openapi)
 
 ;;; JSON decoding for OpenAPI objects.
 ;;;
@@ -573,5 +573,5 @@ INPUT may be a JSON string, a character stream, or a binary (octet) stream.
 Binary streams are decoded as UTF-8 via flexi-streams (delegated to cl-json).
 
 Example:
-  (cl-openapi:parse \"{\\\"openapi\\\":\\\"3.0.0\\\",\\\"info\\\":{...},...}\")"
+  (io.github.cl-sdk.openapi:parse \"{\\\"openapi\\\":\\\"3.0.0\\\",\\\"info\\\":{...},...}\")"
   (json:decode-json 'openapi-document (json:parse input)))

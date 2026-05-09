@@ -4,7 +4,7 @@
 
 (asdf:initialize-source-registry)
 
-(ql:quickload :cl-openapi.test)
+(ql:quickload :io.github.cl-sdk.openapi.test)
 
 (unless (5am:run-all-tests)
   (uiop:quit -1))
